@@ -6,9 +6,11 @@ import Projects from './pages/Projects'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import Header from './components/Header'
 const App = () => {
   return (
     <>
+    <Header/>
       <Routes>
         <Route path='/about' element={<About/>} />
         <Route path='/' element={<Home/>} />
