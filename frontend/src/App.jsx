@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Header from './components/Header'
 import { ToastContainer, toast } from 'react-toastify';
+import Footer from './components/Footers'
 const App = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
+      <Footer/>
     </>
   )
 }
