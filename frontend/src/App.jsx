@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route, BrowserRouter } from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
@@ -12,6 +12,7 @@ import Footer from './components/Footers'
 const App = () => {
   return (
     <>
+    <BrowserRouter>
     <ToastContainer/>
     <Header/>
       <Routes>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
       <Footer/>
+      </BrowserRouter>
     </>
   )
 }
