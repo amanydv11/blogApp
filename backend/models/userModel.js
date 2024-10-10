@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
         unique:true
 
     },
+    profilePicture:{
+        type:String,
+        default:"https://tse2.mm.bing.net/th?id=OIP.eMLmzmhAqRMxUZad3zXE5QHaHa&pid=Api&P=0&h=180",
+    }
 }, {timestamps:true}
 )
 const User = mongoose.model('User',userSchema) 
