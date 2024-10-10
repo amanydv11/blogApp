@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard'
 import Header from './components/Header'
 import { ToastContainer, toast } from 'react-toastify';
 import Footer from './components/Footers'
+import PrivateRoute from './components/PrivateRoute'
 const App = () => {
   return (
     <>
@@ -21,7 +22,10 @@ const App = () => {
         <Route path='/projects' element={<Projects/>} />
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element={<Signup/>} />
+        <Route element={<PrivateRoute/>}>
         <Route path='/dashboard' element={<Dashboard/>} />
+        </Route>
+       
       </Routes>
       <Footer/>
       </BrowserRouter>
