@@ -59,7 +59,7 @@ res.status(200).cookie('access_token',token,{
  }
 
  export  const google =async (req,res,next)=>{
-    const{email,name,googlePhotoUrl}= req.body;
+    const{email,name,googlePhotoURL}= req.body;
     try {
         const user = await User.findOne({email});
         if(user){
@@ -69,13 +69,15 @@ res.status(200).cookie('access_token',token,{
                 httpOnly:true,
             }).json(rest)
         }else{
-            const generatedPassword = Math.random().toString(36).slice(-8)+Math.random().toString(36).slice(-8);
+            const generatedPassword = 
+            Math.random().toString(36).slice(-8)+
+            Math.random().toString(36).slice(-8);
             const hashedPassword = bcryptjs.hashSync(generatedPassword,10);
             const newUser = new User({
                 username:name.toLowerCase().split(' ').join('')+Math.random().toString(9).slice(-4),
                 email,
                 password:hashedPassword,
-                profilePicture:googlePhotoUrl,
+                profilePicture:googlePhotoURL,
             });
             await newUser.save();
             const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);

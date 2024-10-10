@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePicture:{
         type:String,
-        default:"https://tse2.mm.bing.net/th?id=OIP.eMLmzmhAqRMxUZad3zXE5QHaHa&pid=Api&P=0&h=180",
+        default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
     }
 }, {timestamps:true}
 )
