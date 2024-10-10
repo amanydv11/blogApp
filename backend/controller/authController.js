@@ -15,7 +15,7 @@ if(!username
         next(errorHandler(400, 'All fields are required'));
 }
 
-const hashedPassword = bcryptjs.hashsync(password,10);
+const hashedPassword =await bcryptjs.hash(password,10);
  const newUser = new User({
     username,
     email,

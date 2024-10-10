@@ -7,9 +7,11 @@ import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Header from './components/Header'
+import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
   return (
     <>
+    <ToastContainer/>
     <Header/>
       <Routes>
         <Route path='/about' element={<About/>} />
