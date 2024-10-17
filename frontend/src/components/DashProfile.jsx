@@ -18,6 +18,9 @@ const DashProfile = () => {
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
+  const[imageFileUploading,setImageFileUploading]= useState(null)
+  const[updateUserSuccess, setUpdateUserSuccess]=useState(null);
+ const[updateUserError, setUpdateUserError] = useState(null);
   const [formData, setFormData] = useState({})
   const filePickerRef = useRef();
   const dispatch = useDispatch();
@@ -51,11 +54,13 @@ const DashProfile = () => {
         setImageFileUploadProgress(null)
         setImageFile(null);
         setImageFileUrl(null);
+        setImageFileUploading(false)
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageFileUrl(downloadURL);
           setFormData({...formData,profilePicture:downloadURL})
+          setImageFileUploading(false);
         });
       }
     );
@@ -65,8 +70,14 @@ setFormData({...formData,[e.target.id]:e.target.value})
   }
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    setUpdateUserError(null);
+    setUpdateUserSuccess(null);
     if(Object.keys(formData).length === 0){
-      return
+      setUpdateUserError('No changes made');
+      return;
+    }
+    if(imageFileUploading){
+      return;
     }
     try {
       dispatch(updateStart());
@@ -80,13 +91,16 @@ setFormData({...formData,[e.target.id]:e.target.value})
       const data =  await res.json();
       if(!res.ok){
         dispatch(updateFailure(data.message));
+        setUpdateUserError(data.message);
       }
       else{
         dispatch(updateSuccess(data));
+        setUpdateUserSuccess("User profile updated successfully")
       }
     } catch (error) {
       console.error("Error updating user:", error);
       dispatch(updateFailure(error.message))
+      setUpdateUserError(error.message);
     }
   }
   return (
@@ -162,6 +176,16 @@ setFormData({...formData,[e.target.id]:e.target.value})
         <span className="cursor-pointer">Delete Account</span>
         <span className="cursor-pointer">Sign Out</span>
       </div>
+      {updateUserSuccess&& (
+        <Alert color="success" className="mt-5">
+          {updateUserSuccess}
+        </Alert>
+      )}
+      {updateUserError&& (
+        <Alert color="failure" className="mt-5">
+          {updateUserError}
+        </Alert>
+      )}
     </div>
   );
 };
