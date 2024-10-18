@@ -10,6 +10,8 @@ import Header from './components/Header'
 import { ToastContainer, toast } from 'react-toastify';
 import Footer from './components/Footers'
 import PrivateRoute from './components/PrivateRoute'
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
+import CreatePost from './pages/CreatePost'
 const App = () => {
   return (
     <>
@@ -25,7 +27,9 @@ const App = () => {
         <Route element={<PrivateRoute/>}>
         <Route path='/dashboard' element={<Dashboard/>} />
         </Route>
-       
+        <Route element={<OnlyAdminPrivateRoute/>}>
+        <Route path='/create-post' element={<CreatePost/>} />
+        </Route>
       </Routes>
       <Footer/>
       </BrowserRouter>
