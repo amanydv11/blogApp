@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute'
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
 import CreatePost from './pages/CreatePost'
 import UpdatePost from './pages/UpdatePost'
+import AllPosts from './pages/AllPosts'
 const App = () => {
   return (
     <>
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path='/about' element={<About/>} />
         <Route path='/' element={<Home/>} />
+        <Route path='/post/:postSlug' element={<AllPosts/>} />
         <Route path='/projects' element={<Projects/>} />
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element={<Signup/>} />
