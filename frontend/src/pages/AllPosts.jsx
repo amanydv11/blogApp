@@ -2,6 +2,8 @@ import { Button, Spinner } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Action from "../components/Action";
+import CommentAdd from "../components/CommentAdd";
+
 const AllPosts = () => {
   const { postSlug } = useParams();
   const [loading, setLoading] = useState(true);
@@ -50,6 +52,7 @@ const AllPosts = () => {
 <div className="max-w-4xl mx-auto w-full">
   <Action/>
 </div>
+  <CommentAdd postId={post._id}/>
   </main>;
 };
 

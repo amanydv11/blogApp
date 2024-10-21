@@ -12,8 +12,8 @@ const Action = () => {
           gradientDuoTone="purpleToPink"
         >
           <a href="#" target="_blank" rel="noopener noreferrer">
-            With me and u{" "}
-          </a>{" "}
+            Join us
+          </a>
         </Button>
       </div>
       <div className="p-7 flex-1 ">
