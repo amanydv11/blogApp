@@ -36,10 +36,19 @@ const DashSidebar = () => {
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.ItemGroup className="flex flex-col gap-1">
-        <Sidebar.Item icon={AiFillPieChart} className="cursor-pointer">
-          Dashboard
-        </Sidebar.Item>
-
+       
+      {currentUser.isAdmin && (
+          <Link to="/dashboard?tab=dashboard">
+            <Sidebar.Item
+              active={tab === "dashboard"}
+              icon={AiFillPieChart}
+              labelColor="dark"
+              as="div"
+            >
+              Dashboard
+            </Sidebar.Item>
+          </Link>
+        )}
         <Link to="/dashboard?tab=profile">
           <Sidebar.Item
             active={tab === "profile"}
@@ -78,10 +87,18 @@ const DashSidebar = () => {
           </Link>
         )}
 
-        <Sidebar.Item icon={BiSolidCommentDetail} className="cursor-pointer">
-          Comments
-        </Sidebar.Item>
-
+{currentUser.isAdmin && (
+          <Link to="/dashboard?tab=comments">
+            <Sidebar.Item
+              icon={BiSolidCommentDetail}
+              active={tab === "comments"}
+              labelColor="dark"
+              as="div"
+            >
+              Comments
+            </Sidebar.Item>
+          </Link>
+        )}
         <Sidebar.Item
           icon={HiArrowSmRight}
           className="cursor-pointer"
