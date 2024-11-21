@@ -2,7 +2,6 @@ import { Button, Select, TextInput } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import PostCard from '../components/PostCard'
 import { useLocation,useNavigate } from 'react-router-dom';
-import { AiFillWechat } from 'react-icons/ai';
 const Search = () => {
   const[sidebarData,setSidebarData] =useState({
     searchTerm:'',
@@ -40,7 +39,7 @@ if(res.ok){
   const data = await res.json();
   setPosts(data.posts);
   setLoading(false);
-  if(data.posts.length===9){
+  if(data.posts.length===2){
     setShowMore(true);
   }
   else{
@@ -49,16 +48,17 @@ if(res.ok){
 }
 }
 fetchPosts();
-  },[loaction.search])
+  },[loaction.search]);
+
   const handleChange = (e)=>{
 if(e.target.id === 'searchTerm'){
   setSidebarData({...sidebarData,searchTerm:e.target.value})
 }
-if(e.target.value ==='sort'){
+if(e.target.id ==='sort'){
   const order = e.target.value || 'desc';
   setSidebarData({...sidebarData,sort:order});
 }
-if(e.target.value === 'category'){
+if(e.target.id === 'category'){
   const category = e.target.value || 'uncategorized';
   setSidebarData({...sidebarData,category});
 }
@@ -107,7 +107,7 @@ if(data.posts.length === 2){
             </div>
 <div className="flex items-center gap-2">
   <label className='font-semibold'>Sort :</label>
-  <Select onChange={handleChange} defaultValue={sidebarData.sort}
+  <Select onChange={handleChange} value={sidebarData.sort}
   id='sort'>
     <option value="desc">Latest</option>
     <option value="asc">Oldest</option>
@@ -115,7 +115,7 @@ if(data.posts.length === 2){
 </div>
 <div className="flex items-center gap-2">
   <label className='font-semibold'>Category :</label>
-  <Select onChange={handleChange} defaultValue={sidebarData.category}
+  <Select onChange={handleChange} value={sidebarData.category}
   id='category'>
     <option value="uncategorized">uncategorized</option>
     <option value="reactjs">React.js</option>
@@ -139,11 +139,16 @@ if(data.posts.length === 2){
           }
           {
             !loading && posts && posts.map((post)=>
-              <PostCard key={post._id} post={post} />
-            )}
-            {
-              showMore && <button onClick={handleShowMore} className=' w-full text-teal-500 p-7 text-lg hover:underline items-center'>Show More</button>
-            }
+              <PostCard key={post._id} post={post} />)}
+              
+            {!showMore && (
+            <button
+              onClick={handleShowMore}
+              className='text-teal-500 text-lg hover:underline p-7 w-full'
+            >
+              Show More
+            </button>
+          )}
         </div>
       </div>
     </div>
