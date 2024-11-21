@@ -2,6 +2,17 @@ import User from "../models/userModel.js";
 import bcryptjs from 'bcryptjs'
 import{errorHandler} from '../utils/error.js'
 import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer'
+
+const transporter = nodemailer.createTransport({
+    service:"gmail",
+    auth:{
+        user: process.env.EMAIL, 
+        pass: process.env.EMAIL_PASS,
+    }
+})
+
+
 
 export const signup = async(req,res,next)=>{
 const {username, email, password}= req.body;
@@ -89,4 +100,36 @@ res.status(200).cookie('access_token',token,{
     } catch (error) {
         next(error)
     }
+ }
+ export const forgotpassword = async(req,res,next)=>{
+    const {email}= req.body;
+
+    try {
+        const validUser = await User.findOne({email});
+    if(!validUser){
+        next(errorHandler(400, 'Wrong Credentails'));
+    }
+    const token = jwt.sign({id: validUser._id},process.env.JWT_SECRET,{
+        expiresIn:"300s"
+    })
+    const setusertoken = await User.findByIdAndUpdate(validUser._id,{verifytoken:token},{new:true});
+    if(setusertoken){
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to:email,
+            subject:"Email for password Reset",
+            text:`This link valid for 2 MINUTES http://localhost:5173/reset/${validUser._id}/${token} `
+        }
+        transporter.sendMail(mailOptions,(error,info)=>{
+            if(error){
+                next(error)
+            }else{
+                res.status(200).json({status:200,message:'Email sent Successfully'})
+            }
+        })
+    }
+    } catch (error) {
+        next(error)
+    }
+    
  }

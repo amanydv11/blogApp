@@ -85,11 +85,18 @@ return (
           </Button>
           <OAuth/>
         </form>
+        <div className="flex justify-between">
         <div className="flex gap-2 text-sm mt-2">
         <span>Don't Have an account?</span>
         <Link to='/signup' className="text-blue-500">
         Sign Up</Link>
         </div>
+        <div className="flex gap-2 text-sm mt-2">
+        <Link to='/forgot_pass' className="text-blue-500">
+        Forgot Password</Link>
+        </div>
+        </div>
+        
         {
           errorMessage && (
               <Alert className="mt-5"color="failure" >{errorMessage}</Alert>
