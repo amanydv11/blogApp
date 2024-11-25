@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     verifytoken:{
         type:String,
     },
+    resetPasswordToken:String,
+    resetPasswordExpiresAt:Date,
+    verificationToken:String,
+    verificationTokenExpiresAt:Date,
     
 },
  {timestamps:true}
