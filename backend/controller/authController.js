@@ -115,10 +115,10 @@ res.status(200).json({success:true,message:"Password reset link has been sent to
  }
  export const resetPassword = async(req,res,next)=>{
     try {
-        const {tokeen}= req.params;
+        const {token}= req.params;
         const {password} = req.body;
         const validUser = await User.findOne({
-            resetPasswordToken:tokeen,
+            resetPasswordToken:token,
             resetPasswordExpiresAt:{$gt:Date.now()},
         });
         if(!validUser){

@@ -55,11 +55,11 @@ export const sendResetSuccessEmail = (email) => {
 			category: "Password Reset",
 		}
 
-		transporter.sendMail(mailOptions,(error)=>{
+		transporter.sendMail(mailOptions,(error,info)=>{
 			if(error){
 				console.log("Error",error)
 			}else{
-				console.log("Email sent ")
+				console.log("Email sent successfully", info.response)
 			}
 		})
 		console.log("Password reset email sent successfully", response);

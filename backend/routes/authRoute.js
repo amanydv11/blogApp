@@ -6,5 +6,5 @@ router.post('/signup',signup)
 router.post('/signin',signin)
 router.post('/google',google)
 router.post('/forgot-password',forgotpassword)
-router.post('/reset-password/:tokeen',resetPassword)
+router.post('/reset-password/:token',resetPassword)
 export default router;

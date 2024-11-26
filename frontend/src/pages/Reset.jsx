@@ -1,21 +1,35 @@
 import React,{useState} from 'react'
 import { TextInput,Button } from 'flowbite-react'
+import { useNavigate, useParams } from "react-router-dom";
 const Reset = () => {
-    const[formData,setFormData] = useState({})
-const[errorMessage,setErrorMessage] =useState(null)
-    const[loading,setLoading] = useState(false)
-    const handleSubmit=async(e)=>{
-e.preventDefault();
-try {
+  const [password, setPassword] = useState("");
+
+  const[errorMessage,setErrorMessage] =useState(null)
+  const[loading,setLoading] = useState(false)
+  const { token } = useParams();
+  const navigate = useNavigate()
+
+  const handleSubmit=async(e)=>{
+   e.preventDefault();
+
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long.");
+    return;
+}
+   try {
     setLoading(true);
-            setErrorMessage(null);
-const res = await fetch(`/api/auth/resetpassword`,{
+    setErrorMessage(null);
+    const res = await fetch(`/api/auth/reset-password/${token}`,{
     method:'POST',
                 headers:{'Content-Type': 'application/json'},
-                body:JSON.stringify(formData)
-});
-const data = await res.json();
+                body:JSON.stringify({password})
+   });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to update password");
+  }
             if (data.success) {
+              setLoading(false)
                 navigate('/signin')
               }
 
@@ -40,11 +54,12 @@ const data = await res.json();
 <form onSubmit={handleSubmit}>
         
         <div className=" flex flex-col items-center m-3 gap-4 box-border ">
-          <TextInput className='w-[350px]' type="password" placeholder='Password'/>
-          <TextInput className='w-[350px]' type="password" placeholder='Confirm password'/>
-          <Button type='submit'  className='bg-orange-500 border border-black rounded-md w-[300px] h-10'>
-          Send
+          <TextInput className='w-[350px]' type="password" placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)} required />
+            
+          <Button type='submit'  className='bg-orange-500 border border-black rounded-md w-[300px] h-10' disabled={loading} >
+          {loading ? "Updating..." : "Update Password"}
         </Button>
+        {errorMessage && <p className="text-red-500 mt-3">{errorMessage}</p>}
   </div>
         
       </form>
