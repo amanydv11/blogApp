@@ -26,6 +26,7 @@ const[errorMessage,setErrorMessage] =useState(null)
           }
             if (data.success) {
               setMessage("Reset email sent successfully!");
+              navigate('/')
               }
         } catch (error) {
             setErrorMessage(error.message)
