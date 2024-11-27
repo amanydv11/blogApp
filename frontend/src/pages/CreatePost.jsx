@@ -84,7 +84,7 @@ export default function CreatePost() {
   };
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
+      <h1 className=' text-center text-3xl my-7 font-semibold'>Create a post</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
           <TextInput
@@ -106,6 +106,14 @@ export default function CreatePost() {
             <option value='javascript'>JavaScript</option>
             <option value='reactjs'>React.js</option>
             <option value='nextjs'>Next.js</option>
+            <option value='mongodb'>MongoDb</option>
+            <option value='css'>CSS</option>
+            <option value='html'>HMTL</option>
+            <option value='c++'>C++</option>
+            <option value='collage'>Collage</option>
+            <option value='food'>Food</option>
+            <option value='state'>State</option>
+            <option value='course'>Course</option>
           </Select>
         </div>
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
@@ -151,9 +159,9 @@ export default function CreatePost() {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToPink'>
+        <button type='submit' className='bg-orange-500 border border-orange-700 rounded-md py-1 hover:bg-red-700 text-lg'>
           Publish
-        </Button>
+        </button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}

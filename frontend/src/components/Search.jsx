@@ -121,13 +121,21 @@ if(data.posts.length === 2){
     <option value="reactjs">React.js</option>
     <option value="nextjs">Next.js</option>
     <option value="javascript">JavaScript</option>
+    <option value='mongodb'>MongoDb</option>
+    <option value='css'>CSS</option>
+    <option value='html'>HMTL</option>
+    <option value='c++'>C++</option>
+    <option value='collage'>Collage</option>
+    <option value='food'>Food</option>
+    <option value='state'>State</option>
+    <option value='course'>Course</option>
   </Select>
 </div>
 <Button type='submit' outline gradientDuoTone='purpleToBlue'>Apply Filters</Button>
         </form>
       </div>
       <div className="w-full">
-        <h1 className='text-2xl font-bold p-3 mt-5 sm:border-b border-gray-600 font-serif'>Posts Results :</h1>
+        <h1 className='text-4xl font-bold p-3 mt-5 sm:border-b border-gray-600 font-serif'>Posts:</h1>
         <div className="p-7 flex flex-wrap gap-4 ">
           {
             !loading && posts.length === 0 && (
