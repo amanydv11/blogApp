@@ -2,7 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
-
+import newlogo from '../assets/newlogo.png'
 const Signup = () => {
     const[formData,setFormData] = useState({})
     const[errorMessage,setErrorMessage] =useState(null)
@@ -48,19 +48,8 @@ const handleSubmit= async (e)=>{
             className=" 
         font-bold dark:text-white text-4xl "
           >
-            <span
-              className="px-2 py-1 bg-gradient-to-r
-             from-indigo-500 via-purple-500 to-pink-500
-              rounded-lg text-white "
-            >
-              Aman's
-            </span>
-            Blog
+            <img className='w-60' src={newlogo} alt="" />
           </Link>
-          <p className="text-sm mt-5">
-            This is the blog website where u can write your blog. you can sign
-            up with your email and password or with google
-          </p>
         </div>
         {/**right side */}
         <div className="flex-1">

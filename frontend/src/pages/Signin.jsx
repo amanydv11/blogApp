@@ -4,6 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInStart,signInFailure,signInSuccess } from "../redux/user/userSlice";
 import OAuth from "../components/OAuth";
+import newlogo from '../assets/newlogo.png'
 
 const Signin = () => {
   const[formData,setFormData] = useState({})
@@ -48,14 +49,7 @@ return (
           className=" 
       font-bold dark:text-white text-4xl "
         >
-          <span
-            className="px-2 py-1 bg-gradient-to-r
-           from-indigo-500 via-purple-500 to-pink-500
-            rounded-lg text-white "
-          >
-            Aman's
-          </span>
-          Blog
+          <img className='w-60' src={newlogo} alt="" />
         </Link>
         <p className="text-sm mt-5">
           This is the blog website where u can write your blog. you can sign
