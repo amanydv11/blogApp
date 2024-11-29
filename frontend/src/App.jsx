@@ -18,6 +18,9 @@ import ScrollToTop from './components/ScrollToTop'
 import Search from './components/Search'
 import ForgotPass from './pages/ForgotPass'
 import Reset from './pages/Reset'
+import Contatct from './pages/Contatct'
+import TermsCondition from './pages/TermsCondition'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const App = () => {
   return (
@@ -35,7 +38,9 @@ const App = () => {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/search' element={<Search/>} />
         <Route path='/reset/:token' element={<Reset/>} />
-        
+        <Route path='/contact' element={<Contatct/>} />
+        <Route path='/terms' element={<TermsCondition/>} />
+        <Route path='/privacy' element={<PrivacyPolicy/>} />
 
         <Route path='/forgot_pass' element={<ForgotPass/>} />
         <Route element={<PrivateRoute/>}>
