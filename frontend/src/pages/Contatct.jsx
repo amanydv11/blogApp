@@ -26,30 +26,34 @@ const Contatct = () => {
     }
   }
   return (
-    <div>
-       <form className='w- flex-row  m-5' onSubmit={onSubmit}>
-        <div>
-            <Label value="Name" />
+    <div className='' >
+      <h1 className=' flex text-3xl font-serif uppercase m-3  items-center justify-center'>fill the form to contact us !</h1>
+      <div className="flex items-center justify-center">
+      <form className='w-[60%] border mb-5 rounded-md ' onSubmit={onSubmit}>
+        <div className='m-10'>
+            <Label className='text-xl' value="Name" />
             <TextInput name='name' type="text" placeholder="pinku" required />
           </div>
-        <div>
-            <Label value="Email" />
-            <TextInput name='email' type="email" placeholder="user@gmail.com" id="email" required />
+        <div className='m-10'>
+            <Label className='text-xl' value="Email" />
+            <TextInput name='email' type="email" placeholder="user@gmail.com" required />
           </div>
-          <div>
-            <Label value="Contact no" />
+          <div className='m-10'>
+            <Label className='text-xl' value="Phone" />
             <TextInput name='Contact No.' type="number" placeholder="0000000000" required />
           </div>
-          <div>
-            <Label value="Write about your Querry.." />
+          <div className='m-10'>
+            <Label className='text-xl' value="Message" />
             <Textarea name='message' placeholder='Example: I want to know about your projects.. ' required />
           </div>
-      <div className=' flex items-center justify-center ' >
-       <button className='text-black text-center w-[60%] border mt-5 border-black text-xl rounded-md py-2  hover:bg-orange-500'  type="submit">Send</button>
+      <div className=' flex items-center justify-center m-5 ' >
+       <button className='text-black dark:text-white text-center w-[60%] border  border-black text-xl rounded-md py-2  bg-orange-500'  type="submit">Send</button>
         </div>
-        
+        <div className="text-sm text-gray-400 m-1 float-right">* Our team will contact to you in 24hr *</div>
 
       </form>
+      </div>
+       
       <span>{result}</span>
     </div>
   )
