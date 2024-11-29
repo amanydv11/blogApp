@@ -51,10 +51,7 @@ return (
         >
           <img className='w-60' src={newlogo} alt="" />
         </Link>
-        <p className="text-sm mt-5">
-          This is the blog website where u can write your blog. you can sign
-          in with your email and password or with google.
-        </p>
+        
       </div>
       {/**right side */}
       <div className="flex-1">
@@ -67,7 +64,7 @@ return (
             <Label value="Password" />
             <TextInput type="password" placeholder="**********" id="password" onChange={handleChange} />
           </div>
-          <Button gradientDuoTone="purpleToPink" type="submit"disabled={loading} >
+          <Button gradientDuoTone="purpleToPink" type="submit" disabled={loading} >
               {
                   loading ? (
                       <>

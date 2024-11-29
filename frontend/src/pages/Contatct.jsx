@@ -1,29 +1,42 @@
 import React, { useState } from 'react'
+import { useSelector } from "react-redux";
+import {useNavigate } from "react-router-dom";
 import { Label, Textarea, TextInput } from "flowbite-react";
 const Contatct = () => {
   const [result, setResult] =useState('');
-
+  const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
-    const apiKey = import.meta.env.VITE_FORM_API_KEY;
-    formData.append("access_key", apiKey);
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+    try {
+      if (!currentUser) {
+        navigate('/signin');
+        return;
+      }
+      
+      setResult("Sending....");
+      const formData = new FormData(event.target);
+      const apiKey = import.meta.env.VITE_FORM_API_KEY;
+      formData.append("access_key", apiKey);
+  
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        event.target.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
     }
+    
   }
   return (
     <div className='' >
