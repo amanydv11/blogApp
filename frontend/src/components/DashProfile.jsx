@@ -220,14 +220,14 @@ dispatch(signoutSuccess());
           placeholder="password"
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline disabled={loading || imageFileUploading} >
+        <button type="submit" className="dark:bg-blue-500  bg-orange-500 py-2 rounded-md text-lg"  disabled={loading || imageFileUploading} >
           {loading ? 'Loading...' : 'Update'}
-        </Button>
+        </button>
         {currentUser.isAdmin &&(
             <Link to={'/create-post'}>
-            <Button type="button" gradientDuoTone="purpleToPink" outline className="w-full">
+            <button type="button" className="dark:bg-blue-500 bg-orange-500 py-2 rounded-md text-lg w-full">
               Create a post
-            </Button>
+            </button>
          </Link>
           )}
          

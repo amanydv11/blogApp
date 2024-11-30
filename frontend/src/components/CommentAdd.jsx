@@ -147,7 +147,7 @@ const handleDelete = async (commentId)=>{
             <p className="text-gray-500 text-sm">
               {200 - comment.length} characters remaining
             </p>
-            <Button type="submit" gradientDuoTone="purpleToBlue" outline>
+            <Button type="submit" gradientDuoTone="purpleToBlue" >
               Submit
             </Button>
           </div>

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signInStart,signInFailure,signInSuccess } from "../redux/user/userSlice";
 import OAuth from "../components/OAuth";
 import newlogo from '../assets/newlogo.png'
-
+import Spline from '@splinetool/react-spline';
 const Signin = () => {
   const[formData,setFormData] = useState({})
   const {loading,error:errorMessage} =useSelector(state=> state.user);
@@ -49,7 +49,8 @@ return (
           className=" 
       font-bold dark:text-white text-4xl "
         >
-          <img className='w-60' src={newlogo} alt="" />
+          
+          <img className='w-60' src={newlogo} alt="" /> 
         </Link>
         
       </div>
@@ -64,7 +65,7 @@ return (
             <Label value="Password" />
             <TextInput type="password" placeholder="**********" id="password" onChange={handleChange} />
           </div>
-          <Button gradientDuoTone="purpleToPink" type="submit" disabled={loading} >
+          <button className="bg-orange-500 text-lg text-white py-2 rounded-md" type="submit" disabled={loading} >
               {
                   loading ? (
                       <>
@@ -73,7 +74,7 @@ return (
                       </>
                   ): 'Sign In'
               }
-          </Button>
+          </button>
           <OAuth/>
         </form>
         <div className="flex justify-between">

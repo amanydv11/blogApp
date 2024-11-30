@@ -62,7 +62,7 @@ const Contatct = () => {
       <div className=' flex items-center justify-center m-5 ' >
        <button className='text-black dark:text-white text-center w-[60%] border  border-black text-xl rounded-md py-2  bg-orange-500'  type="submit">Send</button>
         </div>
-        <div className="text-sm text-gray-400 m-1 float-right">* Our team will contact to you in 24hr *</div>
+        <div className="text-sm text-gray-400 m-1 float-right">* Our team will contact you within 24 hour *</div>
 
       </form>
       </div>

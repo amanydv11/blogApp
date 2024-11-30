@@ -66,7 +66,7 @@ const handleSubmit= async (e)=>{
               <Label value="Password" />
               <TextInput type="password" placeholder="**********" id="password" onChange={handleChange} />
             </div>
-            <Button gradientDuoTone="purpleToPink" type="submit"disabled={loading} >
+            <button className="bg-orange-500 text-lg text-white py-2 rounded-md" type="submit"disabled={loading} >
                 {
                     loading ? (
                         <>
@@ -75,7 +75,7 @@ const handleSubmit= async (e)=>{
                         </>
                     ): 'Sign Up'
                 }
-            </Button>
+            </button>
             <OAuth/>
           </form>
           <div className="flex justify-between">

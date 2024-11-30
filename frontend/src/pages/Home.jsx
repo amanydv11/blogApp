@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import Action from '../components/Action'
 import PostCard from '../components/PostCard'
+import Spline from '@splinetool/react-spline';
 const Home = () => {
   const[posts,setPosts]= useState([]);
   useEffect(()=>{
@@ -14,13 +15,21 @@ const Home = () => {
   },[]);
   return (
     <div>
-      <div className=" flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto ">
-      <h1 className='text-3xl font-serif font-bold lg:text-5xl'>Welcome to my Blog</h1> 
-      <p className='text-gray-500 text-xs sm:text-sm'>Here you'll find a variety of articles and tutorials on topics such as web development,
-        software engineering, and programming languages.
+      <div className=" flex flex-col gap-6 p- px-3 max-w-6xl mx-auto ">
+        <div className="">
+        <Spline
+        scene="https://prod.spline.design/hi7l0exaD4vqlrNn/scene.splinecode" 
+      />
+        </div>
+      <p className='font-serif m-2  text-xl sm:text-sm'>Here you'll find a variety of articles and tutorials on topics such as web development,
+        software engineering, places,food etc.. <span><Link
+          to={'/search'}
+          className='text-blue-500 hover:underline text-center'
+        >
+          Click here
+        </Link></span>
       </p>
-      <Link to='/search' className='text-xs sm:text-sm text-teal-500 font-bold hover:underline' > View all posts
-</Link>
+     
       </div>
 <div className="p-3 bg-amber-100 dark:bg-slate-700">
   <Action/>

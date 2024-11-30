@@ -131,7 +131,7 @@ if(data.posts.length === 2){
     <option value='course'>Course</option>
   </Select>
 </div>
-<Button type='submit' outline gradientDuoTone='purpleToBlue'>Apply Filters</Button>
+<Button type='submit' gradientDuoTone='purpleToBlue'>Apply Filters</Button>
         </form>
       </div>
       <div className="w-full">

@@ -126,7 +126,6 @@ export default function CreatePost() {
             type='button'
             gradientDuoTone='purpleToBlue'
             size='sm'
-            outline
             onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
           >
