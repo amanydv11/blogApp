@@ -31,13 +31,11 @@ const Home = () => {
       </p>
      
       </div>
-<div className="p-3 bg-amber-100 dark:bg-slate-700">
-  <Action/>
-</div>
+
 <div className="max-w-6xl mx-auto flex flex-col gap-8 py-7">
      {posts && posts.length > 0 && (
       <div className='flex flex-col gap-6'>
-        <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
+        <h1 className='text-4xl font-serif font-semibold text-center'>Recent Posts</h1>
         <div className='justify-center flex flex-wrap gap-6'>
           {posts.map((post) => (
             <PostCard key={post._id} post={post} />
